@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{{user.username}}{% endblock %}
+{% block content %}
+    <div class='user-details'>
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <p>{{user.username}}</p>
+        <p>{{user.email}}</p>
+        <a href='/users/{{user.username}}/feedback/add'>Add Feedback</a>
+        <form action='/users/{{user.username}}/delete' method='POST'>
+            <button>Delete User</button>
+    </form>
+    </div>
+    <div class='feedback-display'>
+        {% for feedback in all_feedback %}
+            <h3>{{feedback.title}}</h3>
+            <p>{{feedback.content}}</p>
+            <a href='/feedback/{{feedback.id}}/update'>edit</a>
+            <a href='/feedback/{{feedback.id}}/delete'>delete</a>
+        {% endfor %}    
+    </div>
+{% endblock %}

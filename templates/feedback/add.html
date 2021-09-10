@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Add Feedback{% endblock %}
+{% block content %}
+<form action='/users/{{username}}/feedback/add' method='POST'>
+    {% include '_forms.html' %}
+    <button>add</button>
+</form>
+{% endblock %}
